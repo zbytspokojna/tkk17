@@ -1,6 +1,6 @@
 # tkk17
 
-Wykonano:
+Wykonano: /n
 obsługa operacji dodawania, odejmowania, dzielenia i mnożenia
 obsługa liczb zmiennoprzecinkowych
 obsługa białych znaków (ignorowanie)
