@@ -5,24 +5,21 @@ import java.io.InputStream;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class Scanner implements Iterator<Token>, Iterable<Token>
-{
+public class Scanner implements Iterator<Token>, Iterable<Token> {
     private InputStream input;
     private int position;
     private char character;
     private boolean end;
     private StringBuilder numBuilder = new StringBuilder();
 
-    public Scanner(InputStream input)
-    {
+    public Scanner(InputStream input) {
         this.input = input;
         this.position = -1;
         this.end = false;
         this.readChar();
     }
 
-    private void readChar()
-    {
+    private void readChar() {
         try {
             int character = this.input.read();
             this.position += 1;
@@ -30,26 +27,22 @@ public class Scanner implements Iterator<Token>, Iterable<Token>
             this.end = end;
             if (!end) {
                 this.character = (char) character;
-
             }
         } catch (IOException e) {
             throw new UncheckedIOException("Scanner input exception.", e);
         }
     }
 
-    public boolean hasNext()
-    {
+    public boolean hasNext() {
         return !this.end;
     }
 
-    public Token next()
-    {
+    public Token next() {
         if (this.end) {
             throw new NoSuchElementException("Scanner input ended.");
         }
 
-        while(this.character == ' ')
-        {
+        while(this.character == ' ') {
             this.readChar();
         }
 
@@ -90,28 +83,22 @@ public class Scanner implements Iterator<Token>, Iterable<Token>
             String location = this.locate(this.position);
             throw new UnexpectedCharacterException(character, location);
         }
-
         return token;
-
     }
 
-    public Iterator<Token> iterator()
-    {
+    public Iterator<Token> iterator() {
         return this;
     }
 
-    private Token makeToken(TokenType type)
-    {
+    private Token makeToken(TokenType type) {
         return new Token(type, this.position);
     }
 
-    private Token makeToken(TokenType type, String value)
-    {
+    private Token makeToken(TokenType type, String value) {
         return new Token(type, this.position, value);
     }
 
-    private static String locate(int position)
-    {
+    private static String locate(int position) {
         return String.valueOf(position);
     }
 }

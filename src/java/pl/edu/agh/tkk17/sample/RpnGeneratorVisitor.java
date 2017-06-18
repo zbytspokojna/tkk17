@@ -2,17 +2,14 @@ package pl.edu.agh.tkk17.sample;
 
 import java.io.PrintStream;
 
-public class RpnGeneratorVisitor implements NodeVisitor
-{
+public class RpnGeneratorVisitor implements NodeVisitor {
     private PrintStream output;
 
-    public RpnGeneratorVisitor(PrintStream output)
-    {
+    public RpnGeneratorVisitor(PrintStream output) {
         this.output = output;
     }
 
-    public void visit(NodeAdd node)
-    {
+    public void visit(NodeAdd node) {
         node.getLeft().accept(this);
         node.getRight().accept(this);
         this.output.println("pop %r10");
@@ -21,8 +18,7 @@ public class RpnGeneratorVisitor implements NodeVisitor
         this.output.println("push %r11");
     }
 
-    public void visit(NodeSub node)
-    {
+    public void visit(NodeSub node) {
         node.getLeft().accept(this);
         node.getRight().accept(this);
         this.output.println("pop %r10");
@@ -31,8 +27,7 @@ public class RpnGeneratorVisitor implements NodeVisitor
         this.output.println("push %r11");
     }
 
-    public void visit(NodeMul node)
-    {
+    public void visit(NodeMul node) {
         node.getLeft().accept(this);
         node.getRight().accept(this);
         this.output.println("pop %r10");
@@ -41,8 +36,7 @@ public class RpnGeneratorVisitor implements NodeVisitor
         this.output.println("push %r11");
     }
 
-    public void visit(NodeDiv node)
-    {
+    public void visit(NodeDiv node) {
         node.getLeft().accept(this);
         node.getRight().accept(this);
         this.output.println("pop %r10");
@@ -51,8 +45,7 @@ public class RpnGeneratorVisitor implements NodeVisitor
         this.output.println("push %r11");
     }
 
-    public void visit(NodeNumber node)
-    {
+    public void visit(NodeNumber node) {
         String value = node.getValue();
         this.output.println("push $" + value);
     }

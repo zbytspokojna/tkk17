@@ -1,7 +1,6 @@
 package pl.edu.agh.tkk17.sample;
 
-public enum TokenType
-{
+public enum TokenType {
     END("END"),
     NUM("NUM"),
     ADD("ADD"),
@@ -13,13 +12,11 @@ public enum TokenType
 
     private final String name;
 
-    TokenType(String name)
-    {
+    TokenType(String name) {
         this.name = name;
     }
 
-    public String getName()
-    {
+    public String getName() {
         return this.name;
     }
 }
