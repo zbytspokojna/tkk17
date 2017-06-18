@@ -1,6 +1,6 @@
-#Projekt z TKK 2017 
+# Projekt z TKK 2017 
 
-##Wykonano:
+## Wykonano:
 obsługa operacji dodawania, odejmowania, dzielenia i mnożenia,
 obsługa liczb zmiennoprzecinkowych,
 obsługa białych znaków (ignorowanie),
